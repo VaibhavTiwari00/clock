@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+
+    <link rel="stylesheet" href="./lo.css" />
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+  </head>
+  <body>
+    <h2>Clock</h2>
+    <div class="clock-parent">
+      <div class="clock">
+        <div class="hr"></div>
+        <div class="mm"></div>
+        <div class="ss"></div>
+      </div>
+    </div>
+    <script>
+      const deg = 6;
+      // getting all hands of clock from html through id
+      const hr = document.querySelector(".hr");
+      const mn = document.querySelector(".mm");
+      const sc = document.querySelector(".ss");
+
+      setInterval(() => {
+        let day = new Date();
+
+        //setting the actual seconds minutes and hour in clock
+        let deg = 6;
+
+        let ms = day.getMilliseconds();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes();
+        let ss = day.getSeconds();
+
+        //changing the degrees in the style as per the time
+
+        hr.style.transform = `rotateZ(${hh + (mm * deg) / 12}deg )`;
+        mn.style.transform = `rotateZ(${mm * deg}deg)`;
+        sc.style.transform = `rotateZ(${ss * deg}deg)`;
+      }, 1000);
+    </script>
+  </body>
+</html>
